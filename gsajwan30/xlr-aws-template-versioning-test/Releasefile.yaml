@@ -1,6 +1,6 @@
 # Exported from:        http://xlr-operators-support-test.eastus.cloudapp.azure.com/
 # Release version:      22.1.2
-# Date created:         Fri May 27 17:33:29 UTC 2022
+# Date created:         Fri May 27 17:44:17 UTC 2022
 
 ---
 apiVersion: xl-release/v1
@@ -10,6 +10,7 @@ metadata:
 spec:
 - template: tem-test
   scheduledStartDate: 2022-05-24T13:00:00Z
+  dueDate: 2022-05-24T14:00:00Z
   phases:
   - phase: New Phase
     tasks:
@@ -33,6 +34,19 @@ spec:
     - name: "4"
       type: xlrelease.UserInputTask
       description: Please enter the required information below.
+  riskProfile: Default risk profile
+- template: temp2
+  scheduledStartDate: 2022-05-24T13:00:00Z
+  phases:
+  - phase: phase-red
+    tasks:
+    - name: sleep
+      type: xlrelease.ScriptTask
+      owner: admin
+      script: |-
+        import time
+        time.sleep(10)
+    color: '#0079BC'
   riskProfile: Default risk profile
 - notifications:
   - notification: TASK_OVERDUE
